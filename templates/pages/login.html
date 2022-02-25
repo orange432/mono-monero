@@ -1,0 +1,21 @@
+{{template "base" .}}
+
+{{define "css"}}
+<style>
+  form{
+    text-align: center;
+  }
+</style>
+{{end}}
+
+{{define "content"}}
+ <h1>Mono Monero - Login</h1>
+  <form method="POST" action="/login">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username"/>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"/>
+    <button type="submit">Login</button>
+  </form>
+
+{{end}}

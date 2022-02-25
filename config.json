@@ -1,0 +1,6 @@
+{
+  "dsn": "host=localhost user=testuser password=testpassword dbname=monomonero port=5432 sslmode=disable",
+  "port": ":3000",
+  "redis_port": ":6379",
+  "session_time": 60
+}

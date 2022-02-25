@@ -10,3 +10,7 @@ import (
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "index.html", &models.TemplateData{})
 }
+
+func LoginPage(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "login.html", &models.TemplateData{})
+}

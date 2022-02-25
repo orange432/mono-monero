@@ -7,6 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/orange432/mono-monero/cache"
+	"github.com/orange432/mono-monero/config"
 	"github.com/orange432/mono-monero/handlers"
 	"github.com/orange432/mono-monero/render"
 )
@@ -17,13 +18,16 @@ func Routes() *mux.Router {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", handlers.HomePage).Methods("GET")
-
+	fileServer := http.FileServer(http.Dir("./public"))
+	r.PathPrefix("/").Handler(http.StripPrefix("/", fileServer))
 	return r
 }
 
 func Init() error {
 	// Load up the templates
 	var appCache cache.AppCache
+
+	config.InitConfig("./config.json")
 
 	tCache, err := render.CreateTemplateCache()
 	if err != nil {
