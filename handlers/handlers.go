@@ -14,3 +14,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 func LoginPage(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "login.html", &models.TemplateData{})
 }
+
+func RegisterPage(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "register.html", &models.TemplateData{})
+}

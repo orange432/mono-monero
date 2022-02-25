@@ -4,8 +4,17 @@ body{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+a,p{
+  color: #fff;
+}
+
 .text-center{
   text-align: center;
+}
+
+.image-center{
+  display: block;
+  margin: 0 auto;
 }
 
 .center{

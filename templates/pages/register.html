@@ -31,11 +31,11 @@
 {{end}}
 
 {{define "content"}}
-<form action="/login" method="POST">
+<form action="/register" method="POST">
   <table>
     <thead>
       <tr>
-        <th colspan="2">Mono Monero - Login</th>
+        <th colspan="2">Mono Monero - Register</th>
       </tr>
     </thead>
     <tbody>
@@ -57,13 +57,22 @@
         </td>
       </tr>
       <tr>
+        <td>
+          <label for="confpassword">Confirm Password</label>
+        </td>
+        <td>
+          <input type="password" name="confpassword" id="confpassword"/>
+        </td>
+      </tr>
+      <tr>
         <td colspan="2" class="text-center">
-          <button type="submit" class="button">Login</button>
+          <button type="submit" class="button">Register</button>
         </td>
       </tr>
     </tbody>
   </table>
 </form>
+ 
  <div class="text-center">
    <a href="/">Go Back</a>
  </div>
