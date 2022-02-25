@@ -7,8 +7,10 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"time"
 
 	"github.com/orange432/mono-monero/cache"
+	"github.com/orange432/mono-monero/config"
 	"github.com/orange432/mono-monero/models"
 )
 
@@ -25,7 +27,15 @@ func NewTemplates(c *cache.AppCache) {
 // RenderTemplate renders a specific template from the template cache.
 func RenderTemplate(w http.ResponseWriter, tmpl string, data *models.TemplateData) {
 	var templates map[string]*template.Template
-
+	if (appCache.LastGotTemplates + config.TEMPLATE_REFRESH) < time.Now().Unix() {
+		tCache, err := CreateTemplateCache()
+		appCache.LastGotTemplates = time.Now().Unix()
+		if err != nil {
+			fmt.Println("Couldn't load template cache")
+		} else {
+			appCache.Templates = tCache
+		}
+	}
 	templates = appCache.Templates
 
 	t, ok := templates[tmpl]

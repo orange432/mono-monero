@@ -7,16 +7,18 @@ import (
 )
 
 type Config struct {
-	DSN          string `json:"dsn"`
-	PORT         string `json:"port"`
-	REDIS_PORT   string `json:"redis_port"`
-	SESSION_TIME int    `json:"session_time"`
+	DSN              string `json:"dsn"`
+	PORT             string `json:"port"`
+	REDIS_PORT       string `json:"redis_port"`
+	SESSION_TIME     int    `json:"session_time"`     // session time in minutes
+	TEMPLATE_REFRESH int64  `json:"template_refresh"` //Seconds per template refresh
 }
 
 var DSN string
 var PORT string
 var REDIS_PORT string
 var SESSION_TIME int
+var TEMPLATE_REFRESH int64
 
 // InitConfig intializes the configuration of this go app
 func InitConfig(fileName string) Config {
@@ -42,5 +44,6 @@ func InitConfig(fileName string) Config {
 	PORT = config.PORT
 	REDIS_PORT = config.REDIS_PORT
 	SESSION_TIME = config.SESSION_TIME
+	TEMPLATE_REFRESH = config.TEMPLATE_REFRESH
 	return config
 }
