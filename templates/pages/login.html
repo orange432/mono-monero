@@ -39,13 +39,13 @@
       </tr>
     </thead>
     <tbody>
-      
+      <tr><td colspan="2">{{ .Error }}</td></tr>
       <tr>
         <td>
          <label for="username">Username</label>
         </td>
         <td>
-          <input type="text" name="username" id="username"/>
+          <input type="text" required name="username" id="username"/>
         </td>
       </tr>
       <tr>
@@ -53,7 +53,26 @@
           <label for="password">Password</label>
         </td>
         <td>
-          <input type="password" name="password" id="password"/>
+          <input type="password" required name="password" id="password"/>
+        </td>
+      </tr>
+      <tr>
+          <td colspan="2">
+          <img src="/captcha/{{ .Captcha }}" alt=""/>
+          </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="captcha">Captcha</label>
+        </td>
+        <td>
+          <input type="text" required id="captcha" name="captcha"/>
+          <input type="hidden" name="captchahash" value="{{ .CaptchaHash }}"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          Note: Captcha is case sensitive.
         </td>
       </tr>
       <tr>

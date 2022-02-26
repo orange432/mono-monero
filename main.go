@@ -8,6 +8,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/orange432/mono-monero/cache"
+	"github.com/orange432/mono-monero/captcha"
 	"github.com/orange432/mono-monero/config"
 	"github.com/orange432/mono-monero/handlers"
 	"github.com/orange432/mono-monero/render"
@@ -29,9 +30,7 @@ func Routes() *mux.Router {
 func Init() error {
 	// Load up the templates
 	var appCache cache.AppCache
-
 	config.InitConfig("./config.json")
-
 	tCache, err := render.CreateTemplateCache()
 	appCache.LastGotTemplates = time.Now().Unix()
 	if err != nil {
@@ -41,6 +40,7 @@ func Init() error {
 	appCache.Templates = tCache
 
 	render.NewTemplates(&appCache)
+	captcha.LoadCache(&appCache)
 	return nil
 }
 

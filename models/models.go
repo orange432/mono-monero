@@ -3,9 +3,12 @@ package models
 import "gorm.io/gorm"
 
 type TemplateData struct {
-	Strings map[string]string
-	User    UserDetails
-	Token   string
+	Strings     map[string]string
+	User        UserDetails
+	Token       string // CSRF Token
+	Captcha     string
+	CaptchaHash string
+	Error       string
 }
 
 type User struct {
